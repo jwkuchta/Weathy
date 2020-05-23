@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const CurrentLocationWeatherButton = () => {
+
+    const [ fetching, setFetching ] = useState()
+    const [ success, setSuccess ] = useState() 
+    const [ location, setLocation ] = useState()
 
     const exampleUrl = `http://api.openweathermap.org/data/2.5/weather?q=Atlanta,us&APPID=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}`
 
