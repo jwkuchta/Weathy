@@ -20,11 +20,12 @@
 
 import React from 'react';
 import './App.css';
+import CurrentLocationWeatherButton from './components/CurrentLocationWeatherButton'
 
 function App() {
   return (
     <div id="wrapper">
-      <button className="btn btn-primary">click me!</button>
+      <CurrentLocationWeatherButton />
     </div>
   );
 }
