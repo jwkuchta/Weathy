@@ -16,11 +16,17 @@ const CurrentLocationWeatherButton = () => {
     }
 
     return (
+
         <div>
-            <button 
-            className="btn btn-primary" 
-            onClick={e => getWeatherData(e)}
-            >click me!</button>
+            <div className="row">
+                <div className="col-xs-4">
+                    <button 
+                    className="btn btn-primary" 
+                    onClick={e => getWeatherData(e)}
+                    >Current Weather</button>
+                </div>
+
+            </div>  
         </div>
     )
 }

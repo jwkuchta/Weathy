@@ -1,31 +1,19 @@
-// import React from 'react';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App" fluid>
-//       <div className="fill">
-//       <header className="panel-heading">
-//         <div className="text-center">
-//           <button className="btn btn-primary">Push me!</button>
-//         </div>
-//       </header>
-//     </div>
-//     </div>
-    
-//   );
-// }
-
-// export default App;
-
 import React from 'react';
 import './App.css';
 import CurrentLocationWeatherButton from './components/CurrentLocationWeatherButton'
+import GeolocationButton from './components/GeolocationButton'
 
 function App() {
   return (
+
     <div id="wrapper">
-      <CurrentLocationWeatherButton />
+      <div className="row">
+        <div className="col-xs-4">
+        <CurrentLocationWeatherButton />
+        <br></br>
+        <GeolocationButton />
+        </div>
+      </div>
     </div>
   );
 }
