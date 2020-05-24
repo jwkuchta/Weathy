@@ -10,20 +10,7 @@ const Form = props => {
     const [ country, setCountry ] = useState()
     const [ location, setLocation ] = useState()
 
-    // const getWeather = async (e) => {
-    //     e.preventDefault();
     //     const apiCall = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric`);
-    //     const data = await apiCall.json();
-    //     if (city && country) {
-    //       this.setWeatherInfo({
-    //         temperature: data.main.temp,
-    //         city: data.name,
-    //         country: data.sys.country,
-    //         humidity: data.main.humidity,
-    //         description: data.weather[0].description,
-    //       });
-    //     }
-    // }
 
     const handleSubmit = e => {
         e.prevent.default()

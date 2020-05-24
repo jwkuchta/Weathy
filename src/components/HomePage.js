@@ -8,28 +8,28 @@ const HomePage = ({ currentLocation }) => {
 
     return (
 
-        <div>
+        <div className="row">
+            <div className="col-xs-5 title">
+                <div>
+                    <p id="title">
+                    <h1>weather</h1>
+                    <h1>checker</h1>
+                    </p>
+                </div>
+            </div>
 
-        <div className="row">
-            <div className="col-xs-4">
-            <br></br>
-            <CityCountryForm />
+            <div className="col-xs-7 form">
+                <CityCountryForm />
             </div>
-        </div>
-        <div className="row">
-            <div className="col-xs-4">
-            <br></br>
-            <CurrentLocationButton />
+            
+            <div className="col-xs-4" form>
+                <CurrentLocationButton />
             </div>
-        </div>
 
-        <div className="row">
-        <div className="col-xs-4">
-            <br></br>
-            {currentLocation !== null && <WeatherOutputContainer />}
-            {currentLocation === null && <p id="weather-data">Location Data not available</p>}
+            <div className="row-xs-5">
+                {currentLocation !== null && <WeatherOutputContainer />}
+                {/* {currentLocation === null && <p id="weather-data">Location Data not available</p>} */}
             </div>
-        </div>
         </div>
     )
     

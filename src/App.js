@@ -5,15 +5,16 @@ import HomePage from './components/HomePage'
 function App() {
 
   return (
-
-    <div id="wrapper">
-      <div className="main">
-        <div className="container">
-          <HomePage />
+    <div>
+      <div className="wrapper">
+        <div className="main">
+          <div className="container">
+            <HomePage />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    </div> 
+  )
 }
 
 export default App;
