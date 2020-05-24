@@ -1,13 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import WeatherOutput from './WeatherOutput'
 
-const WeatherOutputContainer = props => {
+const WeatherOutputContainer = ({ weatherData }) => {
 
     return (
             
         <div>
-            {props.weatherData !== null && <p>WEATHER DATA COMPONENT WILL GO HERE</p>}
-            {props.weatherData === null && <p>No weather Data Yet</p>}  
+            {weatherData !== null && <WeatherOutput />}
+            {weatherData === null && <p>No weather Data Yet</p>}  
         </div>
     )
 }

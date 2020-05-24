@@ -3,7 +3,7 @@ import CurrentLocationButton from './CurrentLocationButton.js'
 import WeatherOutputContainer from './WeatherOutputContainer.js'
 import { connect } from 'react-redux'
 
-const HomePage = props => {
+const HomePage = ({ currentLocation }) => {
 
     return (
 
@@ -18,8 +18,8 @@ const HomePage = props => {
         <div className="row">
         <div className="col-xs-4">
             <br></br>
-            {props.currentLocation !== null && <WeatherOutputContainer />}
-            {props.currentLocation === null && <p>Location Data not available</p>}
+            {currentLocation !== null && <WeatherOutputContainer />}
+            {currentLocation === null && <p id="weather-data">Location Data not available</p>}
             </div>
         </div>
         </div>
