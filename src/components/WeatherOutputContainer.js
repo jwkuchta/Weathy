@@ -1,16 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import WeatherOutput from './WeatherOutput'
+import { WiDaySunny } from 'weather-icons-react'
 
 const WeatherOutputContainer = ({ weatherData }) => {
-
-    debugger
 
     return (
             
         <div>
             {weatherData !== null && <WeatherOutput />}
             {weatherData === null && <p>No weather Data Yet</p>}  
+            
         </div>
     )
 }

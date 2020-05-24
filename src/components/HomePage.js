@@ -1,15 +1,21 @@
 import React from 'react';
+import CityCountryForm from './CityCountryForm'
 import CurrentLocationButton from './CurrentLocationButton.js'
 import WeatherOutputContainer from './WeatherOutputContainer.js'
 import { connect } from 'react-redux'
 
 const HomePage = ({ currentLocation }) => {
 
-    debugger
-
     return (
 
         <div>
+
+        <div className="row">
+            <div className="col-xs-4">
+            <br></br>
+            <CityCountryForm />
+            </div>
+        </div>
         <div className="row">
             <div className="col-xs-4">
             <br></br>
@@ -35,5 +41,4 @@ const mapStateToProps = state => {
     }
 }
 
-// export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
 export default connect(mapStateToProps)(HomePage)

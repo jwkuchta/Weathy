@@ -7,8 +7,8 @@ function App() {
   return (
 
     <div id="wrapper">
-      <div className="row">
-        <div className="col-xs-4">
+      <div className="main">
+        <div className="container">
           <HomePage />
         </div>
       </div>

@@ -16,13 +16,14 @@ const WeatherOutput = ({ weatherData, currentLocation, getWeatherData }) => {
         return result
     }
 
-    debugger
-
     return (
             
         <div id="weather-data">
-            <button id="f" onClick={(e) => handleClick(e)}>F</button>
-            <button id="c" onClick={(e) => handleClick(e)}>C</button>
+            <button id="fahrenheit" onClick={(e) => handleClick(e)}>F°</button>
+            <button id="celsius" onClick={(e) => handleClick(e)}>C°</button>
+            <i className="wi wi-day-sunny" size={1000} color='0000'></i>
+            {/* <WiDaySunny size={1000} color='0000' /> */}
+            <i>This is some icon</i>
             <p>hello from the Weather Output component</p>
             <p>Current Temperature is: {temperature || weatherData.main.temp}</p>
         </div>
