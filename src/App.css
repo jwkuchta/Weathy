@@ -34,7 +34,7 @@ body {
 }
 
 .wrapper {
-  background: linear-gradient(to right, #22bfe6, #3f3ce7);
+  background: linear-gradient(to right, #22bfe6, #05034e);
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -52,7 +52,7 @@ body {
 .title {
   height: 90vh;
   width: 27vw;
-  background: url("img/clouds2.jpg") center center no-repeat;
+  background: url("img/nature.jpg") center center no-repeat;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -78,7 +78,7 @@ body {
 
 .form {
   /* background-color: #4bb0eb; */
-  background: linear-gradient(to left, #22bfe6, #3f3ce7);
+  background: linear-gradient(to left, #22bfe6, #05034e);
   height: 90vh;
   padding-top: 100px;
   padding-left: 50px;
