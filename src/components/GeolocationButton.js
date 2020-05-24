@@ -1,55 +1,52 @@
-import React, { useState } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setCurrentLocation } from '../redux/actions.js'
 
-const GeolocationButton = (props) => {
+class GeolocationButton extends Component {
 
-    let positionData
-
-    const [ latitude, setLatitude ] = useState()
-    const [ longitude, setLongitude ] = useState()
-
-    const getPosition = (position) => {
-        debugger
-        // console.log('latitude: ', position.coords.latitude, 'longitude: ', position.coords.longitude);
-        positionData = position
-        console.log('position data: ', positionData)
-        // setLatitude(positionData.coords.latitude)
-        // setLongitude(position.coords.longitude)
-        // console.log(latitude, longitude)
-        debugger
+    state = {
+        position: {
+            latitude: null,
+            longitude: null
+        }
     }
 
-    const getCurrentLocationData = () => {
-        debugger
+    getPosition = (position) => {
+        this.setState({
+            position: {
+                latitude: position.coords.latitude,
+                longitude: position.coords.longitude
+            }
+        })
+        console.log(this.state)
+        this.props.setLocation(this.state.position)
+    }
+
+    getCurrentLocationData = () => {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(getPosition);
+            navigator.geolocation.getCurrentPosition(this.getPosition);
         } 
     }
-    const handleClick = () => {
-        getCurrentLocationData()
-        debugger
-        setLatitude(positionData.coords.latitude)
-        setLongitude(positionData.coords.longitude)
-        console.log(latitude, longitude)
-        debugger
-        props.setLocation({latitude, longitude})
-        debugger
+
+    handleClick = () => {
+        this.getCurrentLocationData()
     }
 
-    return (
-        <div>
-        <div className="row">
-            <div className="col-xs-4">
-                <button 
-                className="btn btn-primary" 
-                onClick={() => handleClick()}
-                >Current Location</button>
-            </div>
-
-        </div>  
-    </div>
-    )
+    render() {
+        return (
+            <div>
+            <div className="row">
+                <div className="col-xs-4">
+                    <button 
+                    className="btn btn-primary" 
+                    onClick={() => this.handleClick()}
+                    >Current Location</button>
+                </div>
+    
+            </div>  
+        </div>
+        )
+    }
        
 }
 
@@ -60,3 +57,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(null, mapDispatchToProps)(GeolocationButton)
+
+
+
