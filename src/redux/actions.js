@@ -33,6 +33,7 @@ export const setCurrentLocation = location => {
 }
 
 export const selectLocation = location => {
+    debugger
     return { type: 'SELECT_LOCATION', payload: location}
 }
 

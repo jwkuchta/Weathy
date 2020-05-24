@@ -22,6 +22,7 @@ const currentLocationReducer = (state = initialState.location, action) => {
 const selectedLocationReducer = (state = initialState.selectedLocation, action) => {
     switch(action.type) {
         case 'SELECT_LOCATION':
+            debugger
             return action.payload
         default:
             return state

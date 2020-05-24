@@ -4,6 +4,8 @@ import { setCurrentLocation, getWeatherData } from '../redux/actions.js'
 
 const CurrentLocationButton = ({ setLocation, getWeatherData }) => {
 
+    debugger
+
     const getCurrentLocationData = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(getPosition);
@@ -11,6 +13,8 @@ const CurrentLocationButton = ({ setLocation, getWeatherData }) => {
     }
     
     const getPosition = (position) => {
+
+        debugger
 
         let latitude = position.coords.latitude
         let longitude =  position.coords.longitude

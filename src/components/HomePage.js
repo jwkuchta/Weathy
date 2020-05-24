@@ -6,6 +6,8 @@ import { connect } from 'react-redux'
 
 const HomePage = ({ currentLocation }) => {
 
+    debugger
+
     return (
 
         <div className="row">
