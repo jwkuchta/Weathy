@@ -1,13 +1,12 @@
 import { combineReducers } from "redux"
 
 let initialState = {
-    location: 'no location provided'
+    location: 'no location provided',
+    weatherData: {}
 }
 
 const locationReducer = (state = initialState.location, action) => {
     switch(action.type) {
-        case 'GET_LOCATION_SUCCESS':
-            return action.payload
         case 'SET_LOCATION':
             return action.payload
         default:
@@ -15,8 +14,18 @@ const locationReducer = (state = initialState.location, action) => {
     }
 }
 
+const weatherReducer = (state = initialState.weatherData, action) => {
+    switch(action.type) {
+        case 'SET_WEATHER_DATA':
+            return action.payload
+        default:
+            return state
+    }
+}
+
 const rootReducer = combineReducers({
-    location: locationReducer
+    location: locationReducer,
+    weather: weatherReducer
 })
 
 export default rootReducer

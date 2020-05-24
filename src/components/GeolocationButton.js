@@ -8,7 +8,8 @@ class GeolocationButton extends Component {
         position: {
             latitude: null,
             longitude: null
-        }
+        },
+        showOutput: false
     }
 
     getPosition = (position) => {
@@ -16,7 +17,8 @@ class GeolocationButton extends Component {
             position: {
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude
-            }
+            },
+            showOutput: true
         })
         console.log(this.state)
         this.props.setLocation(this.state.position)
@@ -42,8 +44,7 @@ class GeolocationButton extends Component {
                     onClick={() => this.handleClick()}
                     >Current Location</button>
                 </div>
-    
-            </div>  
+            </div> 
         </div>
         )
     }

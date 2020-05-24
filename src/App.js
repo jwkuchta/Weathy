@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
-import CurrentLocationWeatherButton from './components/CurrentLocationWeatherButton'
-import GeolocationButton from './components/GeolocationButton'
+import HomePage from './components/HomePage'
 
 function App() {
   return (
@@ -9,9 +8,7 @@ function App() {
     <div id="wrapper">
       <div className="row">
         <div className="col-xs-4">
-        <CurrentLocationWeatherButton />
-        <br></br>
-        <GeolocationButton />
+          <HomePage />
         </div>
       </div>
     </div>

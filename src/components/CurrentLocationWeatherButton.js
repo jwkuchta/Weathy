@@ -1,38 +1,48 @@
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
+// import { connect } from 'react-redux'
 
-const CurrentLocationWeatherButton = () => {
+// const CurrentLocationWeatherButton = ({ latitude, longitude }) => {
 
-    const [ fetching, setFetching ] = useState()
-    const [ success, setSuccess ] = useState() 
-    const [ location, setLocation ] = useState()
+//     const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
 
-    const exampleUrl = `http://api.openweathermap.org/data/2.5/weather?q=Atlanta,us&APPID=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}`
+//     const apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`
 
-    const getWeatherData = () => {
-        return fetch(exampleUrl, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(weatherData => console.log(weatherData))
-        .catch(error => console.log(error))
-    }
+//     const handleClick = () => {
+//         getCurrentLocation()
+//         getWeatherData()
+//     }
 
-    return (
+//     const getWeatherData = () => {
+//         return fetch(apiUrl, {
+//             headers: {
+//                 'Accept': 'application/json'
+//             }
+//         })
+//         .then(response => response.json())
+//         .then(weatherData => console.log(weatherData))
+//         .catch(error => console.log(error))
+//     }
 
-        <div>
-            <div className="row">
-                <div className="col-xs-4">
-                    <button 
-                    className="btn btn-primary" 
-                    onClick={e => getWeatherData(e)}
-                    >Current Weather</button>
-                </div>
+//     return (
 
-            </div>  
-        </div>
-    )
-}
+//         <div>
+//             <div className="row">
+//                 <div className="col-xs-4">
+//                     <button 
+//                     className="btn btn-primary" 
+//                     onClick={() => handleClick()}
+//                     >Current Weather</button>
+//                 </div>
 
-export default CurrentLocationWeatherButton
+//             </div>  
+//         </div>
+//     )
+// }
+
+// mapStateToProps = state => {
+//     return {
+//         currentLocation: state.location
+//     }
+// }
+
+// export default connect(mapStateToProps)(CurrentLocationWeatherButton)
