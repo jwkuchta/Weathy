@@ -22,7 +22,8 @@ class HomePage extends Component {
             <div className="row">
             <div className="col-xs-4">
                 <br></br>
-                {this.props.currentLocation && <WeatherOutput />}
+                {this.props.currentLocation !== null && <WeatherOutput />}
+                {this.props.currentLocation === null && <p>Location Data not available</p>}
                 </div>
             </div>
             </div>

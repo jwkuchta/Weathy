@@ -3,11 +3,6 @@ import { connect } from 'react-redux'
 
 class WeatherOutput extends Component {
 
-    componentDidMount() {
-        // debugger
-        // this.getWeatherData()
-    }
-
     render() {
 
         debugger
@@ -15,8 +10,8 @@ class WeatherOutput extends Component {
         return (
             
             <div>
-                {this.props.weatherData && <p>weather data put here</p>}
-                
+                {this.props.weatherData !== null && <p>WEATHER DATA COMPONENT WILL GO HERE</p>}
+                {this.props.weatherData === null && <p>No weather Data Yet</p>}  
             </div>
         )
     }
@@ -24,8 +19,7 @@ class WeatherOutput extends Component {
 
 const mapStateToProps = state => {
     return {
-        currentLocation: state.currentLocation,
-        weatherData: state.weatherData
+        weatherData: state.weather
     }
 }
 

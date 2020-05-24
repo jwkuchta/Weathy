@@ -1,8 +1,8 @@
 import { combineReducers } from "redux"
 
 let initialState = {
-    location: 'no location provided',
-    weatherData: {}
+    location: null,
+    weather: null
 }
 
 const locationReducer = (state = initialState.location, action) => {
@@ -14,7 +14,7 @@ const locationReducer = (state = initialState.location, action) => {
     }
 }
 
-const weatherReducer = (state = initialState.weatherData, action) => {
+const weatherReducer = (state = initialState.weather, action) => {
     switch(action.type) {
         case 'SET_WEATHER_DATA':
             return action.payload
