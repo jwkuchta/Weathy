@@ -47,8 +47,7 @@ class GeolocationButton extends Component {
             </div> 
         </div>
         )
-    }
-       
+    }      
 }
 
 const mapDispatchToProps = dispatch => {

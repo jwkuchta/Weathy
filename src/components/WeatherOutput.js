@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-// import { setCurrentLocation } from '../redux/actions'
 
 class WeatherOutput extends Component {
     
@@ -12,7 +11,7 @@ class WeatherOutput extends Component {
                 <div className="row">
                     <div className="col-xs-4">
                         <div className="row">
-                            {}
+                            {this.props.weatherData && this.props.weatherData.main.temp}
                         </div>
                     </div>
     
@@ -24,7 +23,7 @@ class WeatherOutput extends Component {
 
 const mapStateToProps = state => {
     return {
-        currentLocation: state.location
+        weatherData: state.weatherData
     }
 }
 
