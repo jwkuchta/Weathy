@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setCurrentLocation } from '../redux/actions.js'
+import { setCurrentLocation, getWeatherData } from '../redux/actions.js'
 
 class GeolocationButton extends Component {
 
@@ -20,8 +20,8 @@ class GeolocationButton extends Component {
             },
             showOutput: true
         })
-        console.log(this.state)
         this.props.setLocation(this.state.position)
+        this.props.getWeatherData(this.state.position.latitude, this.state.position.longitude)
     }
 
     getCurrentLocationData = () => {
@@ -32,9 +32,12 @@ class GeolocationButton extends Component {
 
     handleClick = () => {
         this.getCurrentLocationData()
+        console.log('got position data')
     }
 
     render() {
+
+        debugger 
         return (
             <div>
             <div className="row">
@@ -52,7 +55,8 @@ class GeolocationButton extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setLocation: location => dispatch(setCurrentLocation(location))
+        setLocation: location => dispatch(setCurrentLocation(location)),
+        getWeatherData: (latitude, longitude) => dispatch(getWeatherData(latitude, longitude))
     }
 }
 

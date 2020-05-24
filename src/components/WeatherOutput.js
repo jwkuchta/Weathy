@@ -2,20 +2,21 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 class WeatherOutput extends Component {
-    
+
+    componentDidMount() {
+        // debugger
+        // this.getWeatherData()
+    }
+
     render() {
 
-        return (
+        debugger
 
+        return (
+            
             <div>
-                <div className="row">
-                    <div className="col-xs-4">
-                        <div className="row">
-                            {this.props.weatherData && this.props.weatherData.main.temp}
-                        </div>
-                    </div>
-    
-                </div>  
+                {this.props.weatherData && <p>weather data put here</p>}
+                
             </div>
         )
     }
@@ -23,9 +24,11 @@ class WeatherOutput extends Component {
 
 const mapStateToProps = state => {
     return {
+        currentLocation: state.currentLocation,
         weatherData: state.weatherData
     }
 }
 
 export default connect(mapStateToProps)(WeatherOutput)
+
 

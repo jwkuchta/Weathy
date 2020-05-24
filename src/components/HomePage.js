@@ -1,43 +1,35 @@
-import React, { useEffect } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import GeolocationButton from './GeolocationButton.js'
 import WeatherOutput from './WeatherOutput.js'
 import { connect } from 'react-redux'
 import { setWeatherData } from '../redux/actions.js';
 
-const HomePage = (props) => {
+class HomePage extends Component {
 
-    const latitude = props.currentLocation.latitude
-    const longitude = props.currentLocation.longitude
-    const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
-    const apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`
+    render() {
 
-    useEffect(() => {
-        getWeatherData()
-    })
+        debugger 
+        return (
 
-    const getWeatherData = () => {
-        return fetch(apiUrl, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(response => response.json())
-        .then(weatherData => props.setWeatherData(weatherData))
-        .catch(error => console.log(error))
+            <div>
+            <div className="row">
+                <div className="col-xs-4">
+                <br></br>
+                <GeolocationButton />
+                </div>
+            </div>
+    
+            <div className="row">
+            <div className="col-xs-4">
+                <br></br>
+                {this.props.currentLocation && <WeatherOutput />}
+                </div>
+            </div>
+            </div>
+        );
     }
 
-    return (
-
-        <div>
-        <div className="row">
-            <div className="col-xs-4">
-            <br></br>
-            <GeolocationButton />
-            </div>
-            <WeatherOutput />
-        </div>
-        </div>
-    );
+    
 }
 
 const mapDispatchToProps = dispatch => {
@@ -53,3 +45,4 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
+// export default connect(mapStateToProps)(HomePage)
