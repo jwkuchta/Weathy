@@ -4,6 +4,8 @@ import WeatherOutput from './WeatherOutput'
 
 const WeatherOutputContainer = ({ weatherData }) => {
 
+    debugger
+
     return (
             
         <div>

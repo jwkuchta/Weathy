@@ -3,9 +3,17 @@
 const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
 
 // get current location, then get current location weather data and save in redux
-export const getWeatherData = (latitude, longitude) => {
-    // debugger
-    const apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`
+export const getWeatherData = (latitude, longitude, ...rest) => {
+    debugger
+    let apiUrl
+    if(rest && rest[0] === 'f') {
+        apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
+    } else if (rest && rest[0] === 'c') {
+        debugger
+        apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
+    } else {
+        apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
+    }
     return dispatch => {
         return fetch(apiUrl, {
             headers: {
