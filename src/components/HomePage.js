@@ -1,42 +1,30 @@
-import React, { Component, useEffect, useState } from 'react';
-import GeolocationButton from './GeolocationButton.js'
-import WeatherOutput from './WeatherOutput.js'
+import React from 'react';
+import CurrentLocationButton from './CurrentLocationButton.js'
+import WeatherOutputContainer from './WeatherOutputContainer.js'
 import { connect } from 'react-redux'
-import { setWeatherData } from '../redux/actions.js';
 
-class HomePage extends Component {
+const HomePage = props => {
 
-    render() {
+    return (
 
-        debugger 
-        return (
-
-            <div>
-            <div className="row">
-                <div className="col-xs-4">
-                <br></br>
-                <GeolocationButton />
-                </div>
-            </div>
-    
-            <div className="row">
+        <div>
+        <div className="row">
             <div className="col-xs-4">
-                <br></br>
-                {this.props.currentLocation !== null && <WeatherOutput />}
-                {this.props.currentLocation === null && <p>Location Data not available</p>}
-                </div>
+            <br></br>
+            <CurrentLocationButton />
             </div>
-            </div>
-        );
-    }
+        </div>
 
+        <div className="row">
+        <div className="col-xs-4">
+            <br></br>
+            {props.currentLocation !== null && <WeatherOutputContainer />}
+            {props.currentLocation === null && <p>Location Data not available</p>}
+            </div>
+        </div>
+        </div>
+    )
     
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        setWeatherData: data => dispatch(setWeatherData(data))
-    }
 }
 
 const mapStateToProps = state => {
@@ -45,5 +33,5 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
-// export default connect(mapStateToProps)(HomePage)
+// export default connect(mapStateToProps, mapDispatchToProps)(HomePage)
+export default connect(mapStateToProps)(HomePage)
