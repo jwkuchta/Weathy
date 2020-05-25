@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { getWeatherData } from '../redux/actions.js'
 
-const WeatherOutput = ({ weatherData, currentLocation, getWeatherDataByCoords }) => {
+const WeatherOutput = ({ weatherData }) => {
 
     const toCelsius = temp => {
         return Math.round((5/9) * (temp - 32))
@@ -61,16 +61,9 @@ const WeatherOutput = ({ weatherData, currentLocation, getWeatherDataByCoords })
 
 const mapStateToProps = state => {
     return {
-        weatherData: state.weather,
-        currentLocation: state.location
+        weatherData: state.weather
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        getWeatherData: (latitude, longitude, option) => dispatch(getWeatherData(latitude, longitude, option))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(WeatherOutput)
+export default connect(mapStateToProps)(WeatherOutput)
 

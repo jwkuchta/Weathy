@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { setCurrentLocation, getWeatherData } from '../redux/actions.js'
 
@@ -6,17 +6,15 @@ const CurrentLocationButton = ({ setLocation, getWeatherData }) => {
 
     const getCurrentLocationData = () => {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(getPosition);
+            navigator.geolocation.getCurrentPosition(position => {
+                let latitude = position.coords.latitude
+                let longitude =  position.coords.longitude
+
+                // setLocation and getWeatherData go to Redux
+                setLocation({position: {latitude, longitude}})
+                getWeatherData(latitude, longitude)
+            })
         } 
-    }
-    
-    const getPosition = (position) => {
-
-        let latitude = position.coords.latitude
-        let longitude =  position.coords.longitude
-
-        setLocation({position: {latitude, longitude}})
-        getWeatherData(latitude, longitude)
     }
 
     return (
