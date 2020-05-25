@@ -28,8 +28,6 @@ const HomePage = ({ currentLocation, weatherData, fetching }) => {
                     </div>
                 </div>
 
-                <br></br><br></br>
-
                 <div className="row">
                     <div className="col-md-4"></div>
                     <div className="col-md-4">
@@ -38,12 +36,11 @@ const HomePage = ({ currentLocation, weatherData, fetching }) => {
                     <div className="col-md-4"></div>
                 </div>
 
-                <br></br><br></br>
+                <br></br>
 
                 <div className="row">
                     <div className="col-md-1"></div>
                     <div className="col-md-10">
-                    {currentLocation !== null & fetching && <p>WORKING ON IT!</p>}
                     {currentLocation !== null && weatherData !== null && <WeatherOutput />}
                     </div>
                     <div className="col-md-1"></div>

@@ -23,12 +23,12 @@ const CurrentLocationButton = ({ setLocation, getWeatherData, setFetching }) => 
 
     return (
         <div>
-        <div className="row">
-            <div className="col-xs-4">
-                <button onClick={() => handleClick()}>Current Location</button>
-            </div>
-        </div> 
-    </div>
+            <div className="row">
+                <div className="col-xs-4">
+                    <button onClick={() => handleClick()}>Current Location</button>
+                </div>
+            </div> 
+        </div>
     )   
 }
 

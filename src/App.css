@@ -82,10 +82,10 @@ input[type="text"] {
     outline: none;
 }
 
-input:-webkit-autofill {
+/* input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 50px white inset;
     -webkit-text-fill-color: white;
-}
+} */
 
 button {
   border: 0;
