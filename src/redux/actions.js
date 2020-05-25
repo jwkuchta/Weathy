@@ -3,7 +3,9 @@
 const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
 
 // get current location, then get current location weather data and save in redux
-export const getWeatherDataByCoords = (latitude, longitude, ...rest) => {
+export const getWeatherData = (latitude, longitude, ...rest) => {
+
+    // rest param comes from the WeatherOutput component if the user switched between Fahrenheit and Celsius
     
     let apiUrl
     if(rest && rest[0] === 'fahrenheit') {
@@ -17,25 +19,7 @@ export const getWeatherDataByCoords = (latitude, longitude, ...rest) => {
         apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
     }
     return dispatch => {
-        return fetch(apiUrl, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(resp => resp.json())
-        .then(data => dispatch(setWeatherData(data)))
-    }
-}
-
-export const getWeatherDataByName = (city, country) => {
-    
-    const apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric`
-    return dispatch => {
-        return fetch(apiUrl, {
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
+        return fetch(apiUrl)
         .then(resp => resp.json())
         .then(data => dispatch(setWeatherData(data)))
     }
@@ -43,16 +27,13 @@ export const getWeatherDataByName = (city, country) => {
 
 // actions
 export const setCurrentLocation = location => {
-    debugger
     return { type: 'SET_LOCATION', payload: location }
 }
 
 export const selectLocation = location => {
-    debugger
     return { type: 'SELECT_LOCATION', payload: location}
 }
 
 export const setWeatherData = data => {
-    // debugger
     return { type: 'SET_WEATHER_DATA', payload: data}
 }

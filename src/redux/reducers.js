@@ -12,13 +12,13 @@ let initialState = {
 const currentLocationReducer = (state = initialState.location, action) => {
     switch(action.type) {
         case 'SET_LOCATION':
-            debugger
             return action.payload
         default:
             return state
     }
 }
 
+// the following function goes with CityCountryForm component and is not currently being used
 const selectedLocationReducer = (state = initialState.selectedLocation, action) => {
     switch(action.type) {
         case 'SELECT_LOCATION':
@@ -32,6 +32,7 @@ const selectedLocationReducer = (state = initialState.selectedLocation, action) 
 const weatherReducer = (state = initialState.weather, action) => {
     switch(action.type) {
         case 'SET_WEATHER_DATA':
+            debugger
             return action.payload
         default:
             return state

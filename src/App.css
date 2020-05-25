@@ -132,6 +132,11 @@ button {
   font-weight: 200;
 }
 
+p#location {
+  font-size: 25px;
+  text-align: center;
+}
+
 
 
 

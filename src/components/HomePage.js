@@ -1,12 +1,11 @@
 import React from 'react';
+// the following component is not fully functional and not used at the moment
 import CityCountryForm from './CityCountryForm'
 import CurrentLocationButton from './CurrentLocationButton.js'
-import WeatherOutputContainer from './WeatherOutputContainer.js'
+import WeatherOutput from './WeatherOutput.js'
 import { connect } from 'react-redux'
 
-const HomePage = ({ currentLocation }) => {
-
-    debugger
+const HomePage = ({ currentLocation, weatherData }) => {
 
     return (
 
@@ -24,7 +23,8 @@ const HomePage = ({ currentLocation }) => {
                 
                 <div className="row">
                     <div className="col-md-12">
-                    <CityCountryForm />
+                        {/* NOT CURRENTLY BEING USED AS IT IS NOT FULLY FUNCTIONAL */}
+                    {/* <CityCountryForm /> */}
                     </div>
                 </div>
 
@@ -43,7 +43,7 @@ const HomePage = ({ currentLocation }) => {
                 <div className="row">
                     <div className="col-md-1"></div>
                     <div className="col-md-10">
-                    {currentLocation !== null && <WeatherOutputContainer />}
+                    {currentLocation !== null && weatherData !== null && <WeatherOutput />}
                 {/* {currentLocation === null && <p id="weather-data">Location Data not available</p>} */}
                     </div>
                     <div className="col-md-1"></div>
@@ -57,7 +57,8 @@ const HomePage = ({ currentLocation }) => {
 
 const mapStateToProps = state => {
     return {
-        currentLocation: state.location
+        currentLocation: state.location,
+        WeatherData: state.weather
     }
 }
 

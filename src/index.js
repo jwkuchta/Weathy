@@ -26,7 +26,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Provider } from 'react-redux'
-// import store from './redux/store'
 import 'bootstrap/dist/css/bootstrap.min.css'
 // added redux-persist because my store was being erased after the api call with city+country
 import { PersistGate } from 'redux-persist/integration/react'
