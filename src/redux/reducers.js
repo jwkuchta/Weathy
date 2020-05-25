@@ -12,7 +12,7 @@ let initialState = {
 const currentLocationReducer = (state = initialState.location, action) => {
     switch(action.type) {
         case 'SET_LOCATION':
-            // debugger
+            debugger
             return action.payload
         default:
             return state
