@@ -2,7 +2,11 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { setCurrentLocation, getWeatherData } from '../redux/actions.js'
 
-const CurrentLocationButton = ({ setLocation, getWeatherData }) => {
+const CurrentLocationButton = ({ setLocation, getWeatherData, setFetching }) => {
+
+    const handleClick = () => {
+        getCurrentLocationData()
+    }
 
     const getCurrentLocationData = () => {
         if (navigator.geolocation) {
@@ -21,7 +25,7 @@ const CurrentLocationButton = ({ setLocation, getWeatherData }) => {
         <div>
         <div className="row">
             <div className="col-xs-4">
-                <button onClick={() => getCurrentLocationData()}>Current Location</button>
+                <button onClick={() => handleClick()}>Current Location</button>
             </div>
         </div> 
     </div>

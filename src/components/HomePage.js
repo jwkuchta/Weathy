@@ -5,7 +5,7 @@ import CurrentLocationButton from './CurrentLocationButton.js'
 import WeatherOutput from './WeatherOutput.js'
 import { connect } from 'react-redux'
 
-const HomePage = ({ currentLocation, weatherData }) => {
+const HomePage = ({ currentLocation, weatherData, fetching }) => {
 
     return (
 
@@ -43,6 +43,7 @@ const HomePage = ({ currentLocation, weatherData }) => {
                 <div className="row">
                     <div className="col-md-1"></div>
                     <div className="col-md-10">
+                    {currentLocation !== null & fetching && <p>WORKING ON IT!</p>}
                     {currentLocation !== null && weatherData !== null && <WeatherOutput />}
                     </div>
                     <div className="col-md-1"></div>
@@ -56,7 +57,8 @@ const HomePage = ({ currentLocation, weatherData }) => {
 const mapStateToProps = state => {
     return {
         currentLocation: state.location,
-        WeatherData: state.weather
+        WeatherData: state.weather,
+        fecthing: state.fecthing
     }
 }
 

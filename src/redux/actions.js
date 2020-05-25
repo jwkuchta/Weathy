@@ -1,13 +1,14 @@
-// action creators
-
 const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
 
 // get current location, then get current location weather data and save in redux
 export const getWeatherData = (latitude, longitude, ...rest) => {
-
     // rest param comes from the WeatherOutput component if the user switched between Fahrenheit and Celsius
-    
+
+    // set to true so a loading info can be shown on the home page
+    setFetchingWeather(true)
+   
     let apiUrl
+    debugger
     if(rest && rest[0] === 'fahrenheit') {
         // units=imperial for fahrenheit
         apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
@@ -21,7 +22,10 @@ export const getWeatherData = (latitude, longitude, ...rest) => {
     return dispatch => {
         return fetch(apiUrl)
         .then(resp => resp.json())
-        .then(data => dispatch(setWeatherData(data)))
+        .then(data => {
+            dispatch(setWeatherData(data))
+            setFetchingWeather(false)
+        })
     }
 }
 
@@ -36,4 +40,8 @@ export const selectLocation = location => {
 
 export const setWeatherData = data => {
     return { type: 'SET_WEATHER_DATA', payload: data}
+}
+
+export const setFetchingWeather = fetching => {
+    return { type: 'FETCHING_WEATHER_DATA', payload: fetching}
 }

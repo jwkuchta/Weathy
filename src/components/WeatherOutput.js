@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { getWeatherData } from '../redux/actions.js'
 
 const WeatherOutput = ({ weatherData }) => {
 
+    debugger
     const toCelsius = temp => {
         return Math.round((5/9) * (temp - 32))
     }
@@ -15,9 +15,15 @@ const WeatherOutput = ({ weatherData }) => {
     }
 
     const inFahrenheit = () => {
+
+        debugger
+
+        let iconUrl = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`
         return (
             <div id="weather-data">
-            <p id="location">{weatherData.name}, {weatherData.sys.country}</p>
+            <p id="location">
+                {weatherData.name}, {weatherData.sys.country} <img src={iconUrl} atl="weather icon"></img>
+            </p>
             <button id="fahrenheit" onClick={(e) => handleClick(e)}>°F</button>
             <button id="celsius" onClick={(e) => handleClick(e)}>°C</button>
             <br></br><br></br>
@@ -32,9 +38,15 @@ const WeatherOutput = ({ weatherData }) => {
     }
 
     const inCelsius = () => {
+
+        debugger
+
+        let iconUrl = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`
         return (
             <div id="weather-data">
-            <p id="location">{weatherData.name}, {weatherData.sys.country}</p>
+            <p id="location">
+                {weatherData.name}, {weatherData.sys.country} <img src={iconUrl} alt="weather icon"></img>
+            </p>
             <button id="fahrenheit" onClick={(e) => handleClick(e)}> F°</button>
             <button id="celsius" onClick={(e) => handleClick(e)}>C°</button>
             <br></br><br></br>

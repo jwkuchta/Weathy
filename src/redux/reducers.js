@@ -1,6 +1,7 @@
 import { combineReducers } from "redux"
 
 let initialState = {
+    fetching: false,
     location: null,
     weather: null, 
     selectedLocation: {
@@ -32,6 +33,16 @@ const selectedLocationReducer = (state = initialState.selectedLocation, action) 
 const weatherReducer = (state = initialState.weather, action) => {
     switch(action.type) {
         case 'SET_WEATHER_DATA':
+            // debugger
+            return action.payload
+        default:
+            return state
+    }
+}
+
+const fetchingReducer = (state = initialState.fetching, action) => {
+    switch(action.type) {
+        case 'FETCHING_WEATHER_DATA':
             debugger
             return action.payload
         default:
@@ -42,7 +53,8 @@ const weatherReducer = (state = initialState.weather, action) => {
 const rootReducer = combineReducers({
     location: currentLocationReducer,
     weather: weatherReducer,
-    selectedLocation: selectedLocationReducer
+    selectedLocation: selectedLocationReducer,
+    fetching: fetchingReducer
 })
 
 export default rootReducer
