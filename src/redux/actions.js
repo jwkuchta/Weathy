@@ -10,13 +10,13 @@ export const getWeatherData = (latitude, longitude, ...rest) => {
     let apiUrl
     if(rest && rest[0] === 'fahrenheit') {
         // units=imperial for fahrenheit
-        apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
+        apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
     } else if (rest && rest[0] === 'celsius') {
         // units=metric for celsius
-        apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
+        apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
     } else {
         // default units=imperial (fahrenheit)
-        apiUrl = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
+        apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
     }
     return dispatch => {
         return fetch(apiUrl)

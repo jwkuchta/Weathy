@@ -47,8 +47,7 @@ const HomePage = ({ currentLocation, weatherData }) => {
                 {/* {currentLocation === null && <p id="weather-data">Location Data not available</p>} */}
                     </div>
                     <div className="col-md-1"></div>
-                </div>
-                
+                </div>  
             </div>
         </div>
     )

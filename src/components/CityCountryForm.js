@@ -20,7 +20,7 @@ const Form = props => {
     }
 
     const getWeatherDataByName = async (city, country) => {
-        const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric`);
+        const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric`);
         const data = await api_call.json()
         props.setWeatherData(data)
         // response comes back but is undefined when parsed 
