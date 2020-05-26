@@ -9,6 +9,7 @@ const CurrentLocationButton = ({ setLocation, getWeatherData }) => {
     }
 
     const getCurrentLocationData = () => {
+        debugger
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
                 let latitude = position.coords.latitude

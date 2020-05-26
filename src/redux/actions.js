@@ -3,6 +3,7 @@ const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
 // ** ACTION CREATORS ** //
 // get current location, then get current location weather data and save in redux
 export const getWeatherDataByCoords = (latitude, longitude, ...rest) => {
+    debugger
     // rest param comes from the WeatherOutput component if the user switched between Fahrenheit and Celsius
     // set to true so a loading info can be shown on the home page
     setFetchingWeather(true)
@@ -55,6 +56,7 @@ export const selectLocation = location => {
 }
 
 export const setWeatherDataByCoords = data => {
+    debugger
     return { type: 'SET_WEATHER_DATA_COORDS', payload: data }
 }
 

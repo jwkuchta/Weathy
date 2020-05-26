@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { connect } from 'react-redux'
-import { selectLocation, getWeatherDataByLocation } from '../redux/actions.js'
+import { getWeatherDataByLocation } from '../redux/actions.js'
 
 const Form = ({ getWeatherData }) => {
 
@@ -18,7 +18,18 @@ const Form = ({ getWeatherData }) => {
     }
 
     const handleSubmit = (e) => {
-        getWeatherData(city, country)
+        debugger
+        if(city && country) {
+            debugger
+            getWeatherData(city, country)
+        } else {
+            debugger
+            e.prevent.default()
+            return ( 
+                <p>I think you forgot to fill out the form</p>
+            )
+        }
+        
         debugger
     }
 
