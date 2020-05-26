@@ -19,7 +19,7 @@ const WeatherOutput = ({ weatherData }) => {
         return (
             <div id="weather-data">
             <p id="location">
-                {weatherData.name}, 
+                {weatherData.name}, &nbsp;
                 {weatherData.sys.country} 
                 <img src={iconUrl} alt="weather icon"></img>
                 {Math.round(weatherData.main.temp)} °F
@@ -45,7 +45,7 @@ const WeatherOutput = ({ weatherData }) => {
         return (
             <div id="weather-data">
             <p id="location">
-                {weatherData.name}, 
+                {weatherData.name}, &nbsp;
                 {weatherData.sys.country} 
                 <img src={iconUrl} alt="weather icon"></img>
                 {toCelsius(weatherData.main.temp)} C°
