@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
-const WeatherOutput = ({ weatherData }) => {
+const WeatherOutput = ({ fetching, weatherData }) => {
+
+    debugger
 
     const toCelsius = temp => {
         return Math.round((5/9) * (temp - 32))
@@ -13,8 +15,16 @@ const WeatherOutput = ({ weatherData }) => {
         setOption(e.target.id)
     }
 
-    const inFahrenheit = () => {
+    const fetchingMessage = () => {
+        return (
+            <div id="weather-data">
+                <p>Working on it!</p>
+                <p>This should only take a moment</p>
+            </div>
+        )
+    }
 
+    const inFahrenheit = () => {
         let iconUrl = `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`
         return (
             <div id="weather-data">
@@ -40,7 +50,6 @@ const WeatherOutput = ({ weatherData }) => {
     }
 
     const inCelsius = () => {
-
         let iconUrl = `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`
         return (
             <div id="weather-data">
@@ -65,9 +74,14 @@ const WeatherOutput = ({ weatherData }) => {
     }
         
     // this is what gets rendered, in Fahrenheit/Celsius depending on the selection
+    if (fetching) {
+        debugger
+        return fetchingMessage()
+    } 
     if (weatherData !== null && option === 'fahrenheit') {
         return inFahrenheit()
-    } else if (weatherData !== null && option === 'celsius') {
+    } 
+    if (weatherData !== null && option === 'celsius') {
         return inCelsius()
     } else {
         return null
@@ -77,6 +91,7 @@ const WeatherOutput = ({ weatherData }) => {
 
 const mapStateToProps = state => {
     return {
+        fetching: state.fetching,
         weatherData: state.weather
     }
 }
