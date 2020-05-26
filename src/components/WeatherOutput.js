@@ -15,7 +15,7 @@ const WeatherOutput = ({ weatherData }) => {
 
     const inFahrenheit = () => {
 
-        let iconUrl = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`
+        let iconUrl = `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`
         return (
             <div id="weather-data">
             <p id="location">
@@ -41,7 +41,7 @@ const WeatherOutput = ({ weatherData }) => {
 
     const inCelsius = () => {
 
-        let iconUrl = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`
+        let iconUrl = `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`
         return (
             <div id="weather-data">
             <p id="location">
