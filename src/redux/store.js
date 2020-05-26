@@ -8,7 +8,7 @@ import storage from 'redux-persist/lib/storage'
 const persistConfig = {
     key: 'root', 
     storage: storage,
-    whitelist: ['location', 'options', 'currentLocation', 'selectedLocation', 'weatherData']
+    whitelist: ['location', 'options', 'currentLocation', 'selectedLocation', 'weather']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

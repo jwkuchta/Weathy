@@ -24,7 +24,7 @@ const HomePage = ({ currentLocation, weatherData, fetching }) => {
                 <div className="row">
                     <div className="col-md-12">
                         {/* NOT CURRENTLY BEING USED AS IT IS NOT FULLY FUNCTIONAL */}
-                    {/* <CityCountryForm /> */}
+                    <CityCountryForm />
                     </div>
                 </div>
 
@@ -54,8 +54,8 @@ const HomePage = ({ currentLocation, weatherData, fetching }) => {
 const mapStateToProps = state => {
     return {
         currentLocation: state.location,
-        WeatherData: state.weather,
-        fecthing: state.fecthing
+        weatherData: state.weather,
+        fetching: state.fetching
     }
 }
 

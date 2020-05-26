@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { setCurrentLocation, getWeatherData } from '../redux/actions.js'
+import { setCurrentLocation, getWeatherDataByCoords } from '../redux/actions.js'
 
-const CurrentLocationButton = ({ setLocation, getWeatherData, setFetching }) => {
+const CurrentLocationButton = ({ setLocation, getWeatherData }) => {
 
     const handleClick = () => {
         getCurrentLocationData()
@@ -14,7 +14,7 @@ const CurrentLocationButton = ({ setLocation, getWeatherData, setFetching }) => 
                 let latitude = position.coords.latitude
                 let longitude =  position.coords.longitude
 
-                // setLocation and getWeatherData go to Redux
+                // setLocation and getWeatherDataByCoords go to Redux
                 setLocation({position: {latitude, longitude}})
                 getWeatherData(latitude, longitude)
             })
@@ -35,7 +35,7 @@ const CurrentLocationButton = ({ setLocation, getWeatherData, setFetching }) => 
 const mapDispatchToProps = dispatch => {
     return {
         setLocation: location => dispatch(setCurrentLocation(location)),
-        getWeatherData: (latitude, longitude) => dispatch(getWeatherData(latitude, longitude))
+        getWeatherData: (latitude, longitude) => dispatch(getWeatherDataByCoords(latitude, longitude))
     }
 }
 

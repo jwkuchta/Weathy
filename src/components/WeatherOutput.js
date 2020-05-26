@@ -19,7 +19,8 @@ const WeatherOutput = ({ weatherData }) => {
         return (
             <div id="weather-data">
             <p id="location">
-                {weatherData.name}, 
+                <i className="bi bi-geo-alt"></i>
+                {weatherData.name}, &nbsp;
                 {weatherData.sys.country} 
                 <img src={iconUrl} alt="weather icon"></img>
                 {Math.round(weatherData.main.temp)} °F
@@ -45,7 +46,8 @@ const WeatherOutput = ({ weatherData }) => {
         return (
             <div id="weather-data">
             <p id="location">
-                {weatherData.name}, 
+                <i class="fas fa-map-marker-alt"></i>
+                {weatherData.name}, &nbsp;
                 {weatherData.sys.country} 
                 <img src={iconUrl} alt="weather icon"></img>
                 {toCelsius(weatherData.main.temp)} C°
@@ -77,7 +79,7 @@ const WeatherOutput = ({ weatherData }) => {
 
 const mapStateToProps = state => {
     return {
-        weatherData: state.weather
+        weatherData: state.weather.currentLocation || state.weather.selectedLocation
     }
 }
 

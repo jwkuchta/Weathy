@@ -1,10 +1,8 @@
 import React, { useState } from "react"
 import { connect } from 'react-redux'
-import { selectLocation, setWeatherData } from '../redux/actions.js'
+import { selectLocation, getWeatherDataByLocation } from '../redux/actions.js'
 
-const Form = props => {
-
-    const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
+const Form = ({ getWeatherData }) => {
 
     const [ city, setCity ] = useState()
     const [ country, setCountry ] = useState()
@@ -19,17 +17,9 @@ const Form = props => {
         }
     }
 
-    const getWeatherDataByName = async (city, country) => {
-        const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric`);
-        const data = await api_call.json()
-        props.setWeatherData(data)
-        // response comes back but is undefined when parsed 
-    }
-
     const handleSubmit = (e) => {
-        getWeatherDataByName(city, country)
-        // e.prevent.default()
-        props.selectLocation({city, country})
+        getWeatherData(city, country)
+        debugger
     }
 
     return(
@@ -48,7 +38,8 @@ const Form = props => {
         placeholder="Country..."
         onChange={e => handleChange(e)}
         />
-		<button>Get Weather</button>
+		{/* <button>Get Weather</button> */}
+        <button>Get Weather</button>
 	</form>
     )
 
@@ -56,8 +47,7 @@ const Form = props => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        selectLocation: location => dispatch(selectLocation(location)),
-        setWeatherData: data => dispatch(setWeatherData(data))
+        getWeatherData: (city, country) => dispatch(getWeatherDataByLocation(city, country))
     }
 }
 
