@@ -1,8 +1,11 @@
 import React, { useState } from "react"
 import { connect } from 'react-redux'
-import { selectLocation, getWeatherData, setFetchingTrue, setFetchingFalse } from '../redux/actions.js'
+import { selectLocation, clearWeatherData, clearLocation, 
+    getWeatherDataByLocation, setFetchingTrue, setFetchingFalse } from '../redux/actions.js'
 
 const Form = props => {
+
+    // debugger
 
     const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
 
@@ -19,13 +22,44 @@ const Form = props => {
         }
     }
 
-    const handleSubmit = (e) => {
+    // const handleSubmit = (e) => {
+    //     e.preventDefault()
+    //     // props.clearLocation()
+    //     debugger
+    //     props.getWeatherData(city, country, 'location')
+    //     // props.selectLocation({city, country})
+    // }
+
+    const handleClick = () => {
+        // props.clearLocation()
+        debugger
+        props.setFetching()
         props.getWeatherData(city, country, 'location')
-        props.selectLocation({city, country})
+        // props.selectLocation({city, country})
     }
 
+    // return(
+    //     <form onSubmit={() => (handleSubmit())}>
+    //         <input 
+    //         type="text" 
+    //         id="city"
+    //         name="city" 
+    //         placeholder="City..."
+    //         onChange={(handleChange)}
+    //         />
+    //         <input 
+    //         type="text" 
+    //         id="country"
+    //         name="country" 
+    //         placeholder="Country..."
+    //         onChange={(handleChange)}
+    //         />
+    //         <button>Get Weather</button>
+	//     </form>
+    // )
+
     return(
-        <form onSubmit={(handleSubmit)}>
+        <form>
             <input 
             type="text" 
             id="city"
@@ -40,7 +74,8 @@ const Form = props => {
             placeholder="Country..."
             onChange={(handleChange)}
             />
-            <button>Get Weather</button>
+            {/* <button onClick={(handleClick)}>Get Weather</button> */}
+            <button onClick={() => handleClick()}>Get Weather</button>
 	    </form>
     )
 }
@@ -48,9 +83,12 @@ const Form = props => {
 const mapDispatchToProps = dispatch => {
     return {
         selectLocation: location => dispatch(selectLocation(location)),
-        getWeatherData: (city, country, type) => dispatch(getWeatherData(city, country, type)),
+        getWeatherData: (city, country, type) => dispatch(getWeatherDataByLocation(city, country, type)),
         setFetchingTrue: () => dispatch(setFetchingTrue()),
-        setFetchingFalse: () => dispatch(setFetchingFalse())
+        setFetchingFalse: () => dispatch(setFetchingFalse()),
+        clearWeatherData: () => dispatch(clearWeatherData()),
+        clearLocation: () => dispatch(clearLocation()),
+        setFetching: () => dispatch(setFetchingTrue()),
     }
 }
 
