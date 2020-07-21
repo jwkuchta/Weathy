@@ -24,6 +24,8 @@ const selectedLocationReducer = (state = initialState.selectedLocation, action) 
     switch(action.type) {
         case 'SELECT_LOCATION':
             return action.payload
+        case 'CLEAR_LOCATION':
+            return initialState.selectedLocation
         default:
             return state
     }
@@ -32,7 +34,6 @@ const selectedLocationReducer = (state = initialState.selectedLocation, action) 
 const weatherReducer = (state = initialState.weather, action) => {
     switch(action.type) {
         case 'SET_WEATHER_DATA':
-            debugger
             return action.payload
         default:
             return state

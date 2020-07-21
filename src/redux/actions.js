@@ -1,21 +1,14 @@
 const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
 
-// get current location, then get current location weather data and save in redux
-export const getWeatherData = (latitude, longitude, ...rest) => {
+// param1 and param2 depend on whether the call was made with coordinates (in which case it will be latitude and longitude)
+// or with city and country (in which case it will be city and country), it will be indicated by type ('coordinates' or 'location')
+export const getWeatherData = (param1, param2, type) => {
     // rest param comes from the WeatherOutput component if the user switched between Fahrenheit and Celsius
     // set to true so a loading info can be shown on the home page
-   
-    let apiUrl
-    if(rest && rest[0] === 'fahrenheit') {
-        // units=imperial for fahrenheit
-        apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
-    } else if (rest && rest[0] === 'celsius') {
-        // units=metric for celsius
-        apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${apiKey}`
-    } else {
-        // default units=imperial (fahrenheit)
-        apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${apiKey}`
-    }
+    let apiUrl = type === 'coordinates' ? 
+    `https://api.openweathermap.org/data/2.5/weather?lat=${param1}&lon=${param2}&units=imperial&appid=${apiKey}` 
+    :
+    `https://api.openweathermap.org/data/2.5/weather?q=${param1},${param2}&appid=${apiKey}&units=imperial`
     return dispatch => {
         return fetch(apiUrl)
         .then(resp => resp.json())
@@ -24,7 +17,6 @@ export const getWeatherData = (latitude, longitude, ...rest) => {
     }
 }
 
-// actions
 export const setCurrentLocation = location => {
     return { type: 'SET_LOCATION', payload: location }
 }
@@ -33,8 +25,11 @@ export const selectLocation = location => {
     return { type: 'SELECT_LOCATION', payload: location}
 }
 
+export const clearLocation = () => {
+    return { type: 'CLEAR_LOCATION', paylod: null }
+}
+
 export const setWeatherData = data => {
-    debugger
     return { type: 'SET_WEATHER_DATA', payload: data}
 }
 

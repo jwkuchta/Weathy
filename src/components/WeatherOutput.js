@@ -138,6 +138,8 @@ import { setWeatherData } from '../redux/actions'
 
 const WeatherOutput = ({ fetching, weatherData, selectedLocation, setWeatherData }) => {
 
+    debugger
+
     useEffect(() => {
         getWeatherDataByName(selectedLocation.city, selectedLocation.country)
     }, [])
