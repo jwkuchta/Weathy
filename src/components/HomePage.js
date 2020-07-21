@@ -5,18 +5,12 @@ import CurrentLocationButton from './CurrentLocationButton.js'
 import WeatherOutput from './WeatherOutput.js'
 import { connect } from 'react-redux'
 
-const HomePage = ({ currentLocation, weatherData, fetching }) => {
+const HomePage = ({ currentLocation, weatherData }) => {
 
     return (
 
         <div className="row">
             <div className="col-md-6 title">
-                <div>
-                    {/* <p id="title">
-                    <h1>weather</h1>
-                    <h1>checker</h1>
-                    </p> */}
-                </div>
             </div>
 
             <div className="col-md-6 form">
@@ -24,7 +18,7 @@ const HomePage = ({ currentLocation, weatherData, fetching }) => {
                 <div className="row">
                     <div className="col-md-12">
                         {/* NOT CURRENTLY BEING USED AS IT IS NOT FULLY FUNCTIONAL */}
-                    {/* <CityCountryForm /> */}
+                    <CityCountryForm />
                     </div>
                 </div>
 
@@ -54,8 +48,7 @@ const HomePage = ({ currentLocation, weatherData, fetching }) => {
 const mapStateToProps = state => {
     return {
         currentLocation: state.location,
-        WeatherData: state.weather,
-        fecthing: state.fecthing
+        WeatherData: state.weather
     }
 }
 

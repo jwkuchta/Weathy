@@ -1,18 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
+import { setWeatherData } from '../redux/actions'
 
-const WeatherOutput = ({ fetching, weatherData }) => {
+const WeatherOutput = ({ fetching, weatherData, selectedLocation, setWeatherData }) => {
 
-    debugger
+    useEffect(() => {
+        getWeatherDataByName(selectedLocation.city, selectedLocation.country)
+    }, [])
 
     const toCelsius = temp => {
         return Math.round((5/9) * (temp - 32))
     }
 
-    const [ option, setOption ] = useState('fahrenheit')
+    const [ option, setOption ] = useState('celsius')
 
     const handleClick = e => {
         setOption(e.target.id)
+    }
+
+    const switchToC = () => {
+        setOption('celsius')
+    }
+
+    const switchToF = () => {
+        setOption('fahrenheit')
     }
 
     const fetchingMessage = () => {
@@ -24,6 +35,14 @@ const WeatherOutput = ({ fetching, weatherData }) => {
         )
     }
 
+    const getWeatherDataByName = (city, country) => {
+        let apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
+        let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=imperial`
+        fetch(apiUrl)
+        .then(resp => resp.json())
+        .then(data => setWeatherData(data))
+    } 
+
     const inFahrenheit = () => {
         let iconUrl = `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`
         return (
@@ -34,8 +53,19 @@ const WeatherOutput = ({ fetching, weatherData }) => {
                 <img src={iconUrl} alt="weather icon"></img>
                 {Math.round(weatherData.main.temp)} °F
             </p>
-            <button id="fahrenheit" onClick={(e) => handleClick(e)}>°F</button>
-            <button id="celsius" onClick={(e) => handleClick(e)}>°C</button>
+            {/* <button id="fahrenheit" onClick={(e) => handleClick(e)}>°F</button>
+            <button id="celsius" onClick={(e) => handleClick(e)}>°C</button> */}
+
+            <label>
+                °F &nbsp;
+                <input type="radio" value="f" checked={option === 'fahrenheit'} onChange={switchToF}></input>
+            </label>
+            
+            <label>
+                °C &nbsp;
+                <input type="radio" value="c" checked={option === 'celsius'} onChange={switchToC}></input>
+            </label>
+            
             <br></br><br></br>
             <p>Conditions: {weatherData.weather[0].main} - {weatherData.weather[0].description}</p>
             <p>Temperature: {Math.round(weatherData.main.temp)} °F</p>
@@ -57,10 +87,21 @@ const WeatherOutput = ({ fetching, weatherData }) => {
                 {weatherData.name}, &nbsp;
                 {weatherData.sys.country} 
                 <img src={iconUrl} alt="weather icon"></img>
-                {toCelsius(weatherData.main.temp)} C°
+                {toCelsius(weatherData.main.temp)} °C
             </p>
-            <button id="fahrenheit" onClick={(e) => handleClick(e)}> F°</button>
-            <button id="celsius" onClick={(e) => handleClick(e)}>C°</button>
+            {/* <button id="fahrenheit" onClick={(e) => handleClick(e)}> °F</button>
+            <button id="celsius" onClick={(e) => handleClick(e)}>°C</button> */}
+
+            <label>
+                °F &nbsp;
+                <input type="radio" value="f" checked={option === 'fahrenheit'} onChange={switchToF}></input>
+            </label>
+
+            <label>
+                °C &nbsp;
+                <input type="radio" value="c" checked={option === 'celsius'} onChange={switchToC}></input>
+            </label>
+
             <br></br><br></br>
             <p>Conditions: {weatherData.weather[0].main} - {weatherData.weather[0].description}</p>
             <p>Temperature: {toCelsius(weatherData.main.temp)} °C</p>
@@ -75,7 +116,6 @@ const WeatherOutput = ({ fetching, weatherData }) => {
         
     // this is what gets rendered, in Fahrenheit/Celsius depending on the selection
     if (fetching) {
-        debugger
         return fetchingMessage()
     } 
     if (weatherData !== null && option === 'fahrenheit') {
@@ -92,9 +132,16 @@ const WeatherOutput = ({ fetching, weatherData }) => {
 const mapStateToProps = state => {
     return {
         fetching: state.fetching,
-        weatherData: state.weather
+        weatherData: state.weather,
+        selectedLocation: state.selectedLocation
     }
 }
 
-export default connect(mapStateToProps)(WeatherOutput)
+const mapDispatchToProps = dispatch => {
+    return {
+        setWeatherData: data => dispatch(setWeatherData(data))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WeatherOutput)
 

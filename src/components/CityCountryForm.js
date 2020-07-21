@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { connect } from 'react-redux'
-import { selectLocation, setWeatherData } from '../redux/actions.js'
+import { selectLocation, setWeatherData, setFetchingTrue, setFetchingFalse } from '../redux/actions.js'
 
 const Form = props => {
 
@@ -20,33 +20,36 @@ const Form = props => {
     }
 
     const getWeatherDataByName = async (city, country) => {
-        const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric`);
+        const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric`)
         const data = await api_call.json()
         props.setWeatherData(data)
         // response comes back but is undefined when parsed 
     }
 
     const handleSubmit = (e) => {
+        debugger
         getWeatherDataByName(city, country)
+        debugger
         // e.prevent.default()
         props.selectLocation({city, country})
+        debugger
     }
 
     return(
-        <form onSubmit={(e) => handleSubmit(e)}>
+        <form onSubmit={(handleSubmit)}>
         <input 
         type="text" 
         id="city"
         name="city" 
         placeholder="City..."
-        onChange={e => handleChange(e)}
+        onChange={(handleChange)}
         />
         <input 
         type="text" 
         id="country"
         name="country" 
         placeholder="Country..."
-        onChange={e => handleChange(e)}
+        onChange={(handleChange)}
         />
 		<button>Get Weather</button>
 	</form>
@@ -57,7 +60,9 @@ const Form = props => {
 const mapDispatchToProps = dispatch => {
     return {
         selectLocation: location => dispatch(selectLocation(location)),
-        setWeatherData: data => dispatch(setWeatherData(data))
+        setWeatherData: data => dispatch(setWeatherData(data)),
+        setFetchingTrue: () => dispatch(setFetchingTrue()),
+        setFetchingFalse: () => dispatch(setFetchingFalse())
     }
 }
 
