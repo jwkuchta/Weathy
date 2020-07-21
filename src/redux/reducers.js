@@ -19,7 +19,6 @@ const currentLocationReducer = (state = initialState.location, action) => {
     }
 }
 
-// the following function goes with CityCountryForm component and is not currently being used
 const selectedLocationReducer = (state = initialState.selectedLocation, action) => {
     switch(action.type) {
         case 'SELECT_LOCATION':
