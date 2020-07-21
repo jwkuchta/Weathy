@@ -27,32 +27,28 @@ const Form = props => {
     }
 
     const handleSubmit = (e) => {
-        debugger
         getWeatherDataByName(city, country)
-        debugger
-        // e.prevent.default()
         props.selectLocation({city, country})
-        debugger
     }
 
     return(
         <form onSubmit={(handleSubmit)}>
-        <input 
-        type="text" 
-        id="city"
-        name="city" 
-        placeholder="City..."
-        onChange={(handleChange)}
-        />
-        <input 
-        type="text" 
-        id="country"
-        name="country" 
-        placeholder="Country..."
-        onChange={(handleChange)}
-        />
-		<button>Get Weather</button>
-	</form>
+            <input 
+            type="text" 
+            id="city"
+            name="city" 
+            placeholder="City..."
+            onChange={(handleChange)}
+            />
+            <input 
+            type="text" 
+            id="country"
+            name="country" 
+            placeholder="Country..."
+            onChange={(handleChange)}
+            />
+            <button>Get Weather</button>
+	    </form>
     )
 
 }

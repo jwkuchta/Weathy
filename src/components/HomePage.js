@@ -17,7 +17,6 @@ const HomePage = ({ currentLocation, weatherData }) => {
                 
                 <div className="row">
                     <div className="col-md-12">
-                        {/* NOT CURRENTLY BEING USED AS IT IS NOT FULLY FUNCTIONAL */}
                     <CityCountryForm />
                     </div>
                 </div>
