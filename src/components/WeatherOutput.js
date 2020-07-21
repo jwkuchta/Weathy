@@ -59,8 +59,8 @@ const WeatherOutput = ({ fetching, weatherData, selectedLocation, setWeatherData
             <label>
                 °F &nbsp;
                 <input type="radio" value="f" checked={option === 'fahrenheit'} onChange={switchToF}></input>
-            </label>
-            
+            </label> &nbsp;
+
             <label>
                 °C &nbsp;
                 <input type="radio" value="c" checked={option === 'celsius'} onChange={switchToC}></input>
@@ -95,7 +95,7 @@ const WeatherOutput = ({ fetching, weatherData, selectedLocation, setWeatherData
             <label>
                 °F &nbsp;
                 <input type="radio" value="f" checked={option === 'fahrenheit'} onChange={switchToF}></input>
-            </label>
+            </label> &nbsp;
 
             <label>
                 °C &nbsp;
