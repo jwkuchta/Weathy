@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { connect } from 'react-redux'
 import { getWeatherData, setFetchingTrue } from '../redux/actions.js'
 
-const Form = props => {
+const Form = ({ getWeatherData, setFetchingTrue }) => {
 
     const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
 
@@ -21,8 +21,8 @@ const Form = props => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        props.setFetchingTrue()
-        props.getWeatherData(city, country, 'location')
+        setFetchingTrue()
+        getWeatherData(city, country, 'location')
     }
 
     return(
@@ -32,14 +32,14 @@ const Form = props => {
             id="city"
             name="city" 
             placeholder="City..."
-            onChange={(handleChange)}
+            onChange={handleChange}
             />
             <input 
             type="text" 
             id="country"
             name="country" 
             placeholder="Country..."
-            onChange={(handleChange)}
+            onChange={handleChange}
             />
             <button>Get Weather</button>
 	    </form>

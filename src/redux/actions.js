@@ -28,7 +28,6 @@ export const clearLocation = () => {
 }
 
 export const setWeatherData = data => {
-    debugger
     return { type: 'SET_WEATHER_DATA', payload: data}
 }
 

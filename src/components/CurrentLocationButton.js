@@ -5,7 +5,6 @@ import { setCurrentLocation, getWeatherData, setFetchingTrue, clearLocation } fr
 const CurrentLocationButton = ({ setLocation, getWeatherData, setFetching }) => {
 
     const handleClick = () => {
-        // clearLocation()
         setFetching()
         getCurrentLocationData()
     }
