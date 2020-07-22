@@ -138,6 +138,10 @@ p#location {
 
 .error {
   color: #eb722c;
+  font-size: 20px;
+  text-align: center;
+  /* letter-spacing: 1px; */
+  /* font-weight: 200; */
 }
 
 
