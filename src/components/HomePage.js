@@ -1,7 +1,6 @@
 import React from 'react'
 import CityCountryForm from './CityCountryForm'
 import CurrentLocationButton from './CurrentLocationButton.js'
-// import WeatherOutput from './WeatherOutput.js'
 import { connect } from 'react-redux'
 import WeatherContainer from './WeatherContainer'
 
@@ -32,7 +31,6 @@ const HomePage = ({ currentLocation, weatherData }) => {
                 <div className="row">
                     <div className="col-md-1"></div>
                     <div className="col-md-10">
-                        {/* {currentLocation !== null && weatherData !== null && <WeatherOutput />} */}
                         {currentLocation !== null && weatherData !== null && <WeatherContainer />}
                     </div>
                     <div className="col-md-1"></div>

@@ -1,13 +1,17 @@
 import React, { useState } from "react"
 import { connect } from 'react-redux'
 import { getWeatherData, setFetchingTrue } from '../redux/actions.js'
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 
 const Form = ({ getWeatherData, setFetchingTrue }) => {
 
     const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
+    let error = 'City and Country cannot be left blank'
 
-    const [ city, setCity ] = useState()
-    const [ country, setCountry ] = useState()
+    const [ city, setCity ] = useState('')
+    const [ country, setCountry ] = useState('')
+    const [ showError, setShowError ] = useState(false)
 
     const handleChange = event => {
         if(event.target.id === 'city') {
@@ -21,8 +25,37 @@ const Form = ({ getWeatherData, setFetchingTrue }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setFetchingTrue()
-        getWeatherData(city, country, 'location')
+        if (city === '' || country === '') {
+            setShowError(true)
+        } else {
+            setFetchingTrue()
+            getWeatherData(city, country, 'location')
+        }
+    }
+
+    const ErrorModal = props => {
+        return (
+          <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+          >
+            <Modal.Header closeButton>
+              <Modal.Title id="contained-modal-title-vcenter">
+                Oops! Something went wrong.
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <p>
+                {error}
+              </p>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button onClick={props.onHide}>Got it</Button>
+            </Modal.Footer>
+          </Modal>
+        );
     }
 
     return(
@@ -30,7 +63,7 @@ const Form = ({ getWeatherData, setFetchingTrue }) => {
             <input 
             type="text" 
             id="city"
-            name="city" 
+            name="city"
             placeholder="City..."
             onChange={handleChange}
             />
@@ -42,6 +75,10 @@ const Form = ({ getWeatherData, setFetchingTrue }) => {
             onChange={handleChange}
             />
             <button>Get Weather</button>
+            <ErrorModal
+            show={showError}
+            onHide={() => setShowError(false)}
+            />
 	    </form>
     )
 }
