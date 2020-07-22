@@ -1,13 +1,6 @@
 import React, { useState } from "react"
 import { connect } from 'react-redux'
-import { selectLocation, 
-    clearWeatherData, 
-    clearLocation, 
-    getWeatherDataByLocation, 
-    getWeatherData,
-    setFetchingTrue, 
-    setFetchingFalse 
-} from '../redux/actions.js'
+import { getWeatherData, setFetchingTrue } from '../redux/actions.js'
 
 const Form = props => {
 
@@ -28,17 +21,8 @@ const Form = props => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // props.clearLocation()
-        props.setFetching()
+        props.setFetchingTrue()
         props.getWeatherData(city, country, 'location')
-        // props.selectLocation({city, country})
-    }
-
-    const handleClick = () => {
-        // props.clearLocation()
-        props.setFetching()
-        props.getWeatherData(city, country, 'location')
-        // props.selectLocation({city, country})
     }
 
     return(
@@ -64,13 +48,8 @@ const Form = props => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        selectLocation: location => dispatch(selectLocation(location)),
         getWeatherData: (city, country, type) => dispatch(getWeatherData(city, country, type)),
-        setFetchingTrue: () => dispatch(setFetchingTrue()),
-        setFetchingFalse: () => dispatch(setFetchingFalse()),
-        clearWeatherData: () => dispatch(clearWeatherData()),
-        clearLocation: () => dispatch(clearLocation()),
-        setFetching: () => dispatch(setFetchingTrue()),
+        setFetchingTrue: () => dispatch(setFetchingTrue())
     }
 }
 

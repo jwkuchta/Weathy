@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { setCurrentLocation, getWeatherData, setFetchingTrue, clearLocation } from '../redux/actions.js'
 
-const CurrentLocationButton = ({ setLocation, getWeatherData, setFetching, clearLocation }) => {
+const CurrentLocationButton = ({ setLocation, getWeatherData, setFetching }) => {
 
     const handleClick = () => {
         // clearLocation()
