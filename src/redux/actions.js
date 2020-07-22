@@ -35,9 +35,9 @@ export const getWeatherDataByLocation = (city, country, type) => {
     debugger
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=imperial`
     return dispatch => {
-        debugger
-        // return fetch(apiUrl)
-        fetch(apiUrl)
+        // debugger
+        return fetch(apiUrl)
+        // fetch(apiUrl)
         .then(resp => resp.json())
         .then(data => dispatch(setWeatherData(data)))
         .then(dispatch(setFetchingFalse()))

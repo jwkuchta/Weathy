@@ -1,7 +1,12 @@
 import React, { useState } from "react"
 import { connect } from 'react-redux'
-import { selectLocation, clearWeatherData, clearLocation, 
-    getWeatherDataByLocation, setFetchingTrue, setFetchingFalse } from '../redux/actions.js'
+import { selectLocation, 
+    clearWeatherData, 
+    clearLocation, 
+    getWeatherDataByLocation, 
+    setFetchingTrue, 
+    setFetchingFalse 
+} from '../redux/actions.js'
 
 const Form = props => {
 
@@ -22,13 +27,14 @@ const Form = props => {
         }
     }
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault()
-    //     // props.clearLocation()
-    //     debugger
-    //     props.getWeatherData(city, country, 'location')
-    //     // props.selectLocation({city, country})
-    // }
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        // props.clearLocation()
+        debugger
+        props.setFetching()
+        props.getWeatherData(city, country, 'location')
+        // props.selectLocation({city, country})
+    }
 
     const handleClick = () => {
         // props.clearLocation()
@@ -59,7 +65,7 @@ const Form = props => {
     // )
 
     return(
-        <form>
+        <form onSubmit={e => handleSubmit(e)}>
             <input 
             type="text" 
             id="city"
@@ -74,8 +80,8 @@ const Form = props => {
             placeholder="Country..."
             onChange={(handleChange)}
             />
-            {/* <button onClick={(handleClick)}>Get Weather</button> */}
-            <button onClick={() => handleClick()}>Get Weather</button>
+            {/* <button onClick={handleClick}>Get Weather</button> */}
+            <button>Get Weather</button>
 	    </form>
     )
 }
