@@ -4,12 +4,6 @@ import { setWeatherData, clearLocation } from '../redux/actions'
 
 const WeatherOutput = ({ fetching, weatherData, selectedLocation, getWeatherData, clearLocation }) => {
 
-    // useEffect(() => {
-    //     debugger
-    //     // clearLocation()
-    //     getWeatherData(selectedLocation.city, selectedLocation.country, 'location')
-    // }, [])
-
     const toCelsius = temp => {
         return Math.round((5/9) * (temp - 32))
     }
@@ -32,14 +26,6 @@ const WeatherOutput = ({ fetching, weatherData, selectedLocation, getWeatherData
             </div>
         )
     }
-
-    // const getWeatherDataByName = (city, country) => {
-    //     let apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
-    //     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=imperial`
-    //     fetch(apiUrl)
-    //     .then(resp => resp.json())
-    //     .then(data => setWeatherData(data))
-    // } 
 
     const weatherStats = () => {
         let temp = Math.round(weatherData.main.temp)
@@ -82,7 +68,6 @@ const WeatherOutput = ({ fetching, weatherData, selectedLocation, getWeatherData
         return fetchingMessage()
     } 
     if (weatherData !== null) {
-        debugger
         return weatherStats()
     } else {
         return null
