@@ -1,5 +1,3 @@
-import { apiKey } from '../../src/redux/actions'
-
 describe('Get Weather Button', () => {
 
     it('Gets the weather data from API', () => {
@@ -8,7 +6,7 @@ describe('Get Weather Button', () => {
         let city = 'Calama'
         let country = 'Chile'
         // test works when I input the apiKey directly into the url, but I am unable to import or use process.env
-        cy.request(`${baseUrl}q=${city},${country}&appid=${apiKey}`)
+        cy.request(`${baseUrl}q=${city},${country}&appid=${Cypress.env('api_key')}`)
         .then((response) => {
             expect(response.body).to.have.property('cod', 200)
         })
