@@ -2,11 +2,12 @@ const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
 
 // param1 and param2 depend on whether the call was made with coordinates (in which case it will be latitude and longitude)
 // or with city and country (in which case it will be city and country), it will be indicated by type ('coordinates' or 'location')
+
+const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?';
+
 export const getWeatherData = (param1, param2, type) => {
     let apiUrl = type === 'coordinates' ? 
-    `https://api.openweathermap.org/data/2.5/weather?lat=${param1}&lon=${param2}&units=imperial&appid=${apiKey}` 
-    :
-    `https://api.openweathermap.org/data/2.5/weather?q=${param1},${param2}&appid=${apiKey}&units=imperial`
+    `${baseUrl}lat=${param1}&lon=${param2}&units=imperial&appid=${apiKey}`:`${baseUrl}q=${param1},${param2}&appid=${apiKey}&units=imperial`
     return dispatch => {
         fetch(apiUrl)
         .then(resp => resp.json())
@@ -16,7 +17,7 @@ export const getWeatherData = (param1, param2, type) => {
 }
 
 export const setCurrentLocation = location => {
-    return { type: 'SET_LOCATION', payload: location }
+    return { type: `SET_LOCATION`, payload: location }
 }
 
 export const selectLocation = location => {
@@ -24,7 +25,7 @@ export const selectLocation = location => {
 }
 
 export const clearLocation = () => {
-    return { type: 'CLEAR_LOCATION', paylod: null }
+    return { type: 'CLEAR_LOCATION' }
 }
 
 export const setWeatherData = data => {
@@ -32,7 +33,7 @@ export const setWeatherData = data => {
 }
 
 export const clearWeatherData = () => {
-    return { type: 'CLEAR_WEATHER_DATA', payload: null}
+    return { type: 'CLEAR_WEATHER_DATA' }
 }
 
 export const setFetchingTrue = () => {

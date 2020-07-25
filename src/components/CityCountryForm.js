@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button'
 
 const Form = ({ getWeatherData, setFetchingTrue, clearWeatherData }) => {
 
-    const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
+    // const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
     let error = 'City and Country cannot be left blank'
 
     const [ city, setCity ] = useState('')
