@@ -53,7 +53,7 @@ const Form = ({ getWeatherData, setFetchingTrue, clearWeatherData }) => {
     }
 
     return(
-        <form onSubmit={e => handleSubmit(e)}>
+        <form onSubmit={e => handleSubmit(e)} class='country-city'>
             <input 
             type="text" 
             id="city"
@@ -68,7 +68,7 @@ const Form = ({ getWeatherData, setFetchingTrue, clearWeatherData }) => {
             placeholder="Country..."
             onChange={handleChange}
             />
-            <button>Get Weather</button>
+            <button id='get-weather'>Get Weather</button>
             <ErrorModal show={showError} onHide={() => setShowError(false)} />
 	    </form>
     )
