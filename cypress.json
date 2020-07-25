@@ -1,4 +1,3 @@
 {
-    "baseUrl": "http://localhost:3000",
-    "apiKey": "lalalalala"
+    "baseUrl": "http://localhost:3000"
 }
