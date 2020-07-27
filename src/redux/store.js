@@ -30,3 +30,8 @@ const enhancer = composeEnhancers(
 export const store = createStore(persistedReducer, enhancer)
 export const persistor = persistStore(store)
 
+// added for Cypress testing
+if (window.Cypress) {
+    window.store = store
+}
+

@@ -6,10 +6,12 @@ export const apiKey = process.env.REACT_APP_OPEN_WEATHER_API_KEY
 const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?';
 
 export const getWeatherData = (param1, param2, type) => {
-    let apiUrl = type === 'coordinates' ? 
-    `${baseUrl}lat=${param1}&lon=${param2}&units=imperial&appid=${apiKey}`:`${baseUrl}q=${param1},${param2}&appid=${apiKey}&units=imperial`
+    let apiUrl = type === 'coordinates' 
+    ? 
+    `${baseUrl}lat=${param1}&lon=${param2}&units=imperial&appid=${apiKey}`
+    :
+    `${baseUrl}q=${param1},${param2}&appid=${apiKey}&units=imperial`
     return dispatch => {
-        debugger
         fetch(apiUrl)
         .then(resp => resp.json())
         .then(data => dispatch(setWeatherData(data)))
@@ -30,6 +32,7 @@ export const clearLocation = () => {
 }
 
 export const setWeatherData = data => {
+    console.log(data)
     return { type: 'SET_WEATHER_DATA', payload: data}
 }
 
