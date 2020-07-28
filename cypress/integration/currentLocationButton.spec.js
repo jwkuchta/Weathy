@@ -1,23 +1,13 @@
-describe('Get Weather Button', () => {
+describe('Current Location Button', () => {
 
     it('visits the app', () => {
         // baseUrl defined in cypress.json
         cy.visit('/')
     })
 
-    let weatherData
     const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?'
     let city = 'Calama'
     let country = 'Chile'
-
-    it('calls a function when clicked', function() {
-        cy.get('#get-weather').click()
-        const clickEventHandlerMock = cy.spy()
-        cy.get('form').then(input => {
-          input.on('click', clickEventHandlerMock)
-          cy.get('form').click({force: true}).then(() => expect(clickEventHandlerMock).to.be.calledOnce)
-        })
-    })
 
     it('gets the weather data from API', () => {      
         // // test works when I input the apiKey directly into the url, but I am unable to import or use process.env
@@ -42,5 +32,3 @@ describe('Get Weather Button', () => {
     })
 
 })
-
-
