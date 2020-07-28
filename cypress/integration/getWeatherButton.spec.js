@@ -1,6 +1,7 @@
 describe('Get Weather Button', () => {
 
     it('visits the app', () => {
+        // baseUrl defined in cypress.json
         cy.visit('/')
     })
 
@@ -10,6 +11,7 @@ describe('Get Weather Button', () => {
     let country = 'Chile'
 
     it('gets the weather data from API', () => {      
+        // // test works when I input the apiKey directly into the url, but I am unable to import or use process.env
         cy.request(`${baseUrl}q=${city},${country}&appid=${Cypress.env('api_key')}`)
         .then((response) => {
             expect(response.body).to.have.property('cod', 200)
@@ -27,6 +29,7 @@ describe('Get Weather Button', () => {
         cy.request(`${baseUrl}q=${city},${country}&appid=${Cypress.env('api_key')}`) 
         .then(resp => weatherData = resp.body)
         cy.window().its('store').then(store => store.dispatch({type: 'SET_WEATHER_DATA', payload: weatherData}))
+        cy.window().its('store').invoke('getState').its('weather').should('deep.equal', weatherData)
     })
 
 })
