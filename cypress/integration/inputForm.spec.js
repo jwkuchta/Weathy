@@ -1,6 +1,6 @@
 describe('Form', () => {
     beforeEach(() => {
-      cy.visit('/')
+        cy.visit('/')
     })
   
     it('it has a country-city form', () => {

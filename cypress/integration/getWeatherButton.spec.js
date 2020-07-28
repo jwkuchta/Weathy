@@ -1,12 +1,15 @@
 describe('Get Weather Button', () => {
 
-    let weatherData
+    it('visits the app', () => {
+        cy.visit('/')
+    })
 
-    it('gets the weather data from API', () => {  
-        const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?'
-        let city = 'Calama'
-        let country = 'Chile'
-        // test works when I input the apiKey directly into the url, but I am unable to import or use process.env
+    let weatherData
+    const baseUrl = 'https://api.openweathermap.org/data/2.5/weather?'
+    let city = 'Calama'
+    let country = 'Chile'
+
+    it('gets the weather data from API', () => {      
         cy.request(`${baseUrl}q=${city},${country}&appid=${Cypress.env('api_key')}`)
         .then((response) => {
             expect(response.body).to.have.property('cod', 200)
@@ -20,12 +23,12 @@ describe('Get Weather Button', () => {
         })
     })
 
-    // it('Saves the fetched weather data in Redux store', () => {
-    //     cy.visit('/')
-    //     cy.window().its('store').invoke('getState').its('weather').should('deep.equal', {
-    //         weather: weatherData.body,
-    //         visibilityFilter: 'show_all'
-    //     })
-    // })
+    it('saves data in Redux store', function() {
+        cy.request(`${baseUrl}q=${city},${country}&appid=${Cypress.env('api_key')}`) 
+        .then(resp => weatherData = resp.body)
+        cy.window().its('store').then(store => store.dispatch({type: 'SET_WEATHER_DATA', payload: weatherData}))
+    })
+
 })
+
 
